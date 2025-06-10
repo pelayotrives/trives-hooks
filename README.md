@@ -25,18 +25,33 @@ Trives Hooks is a collection of custom React hooks designed to simplify and opti
 
 A custom React hook to detect the user's browser. It checks the `userAgent` string and returns boolean flags for Chrome, Safari, Edge, Opera, Firefox, or Other browsers, as well as the detected browser name.
 
+#### Returned values
+
+- `isChrome`: `true` if the browser is Chrome.
+- `isSafari`: `true` if the browser is Safari.
+- `isEdge`: `true` if the browser is Edge.
+- `isOpera`: `true` if the browser is Opera.
+- `isFirefox`: `true` if the browser is Firefox.
+- `isOther`: `true` if the browser is not one of the above.
+- `browser`: The detected browser as a string. Possible values: `"chrome"`, `"safari"`, `"edge"`, `"opera"`, `"firefox"`, `"other"`.
+
 **Usage Example:**
 
 ```typescript
 import { useCheckBrowsers } from "./src/hooks/useCheckBrowsers";
 
 function MyComponent() {
-  const { isChrome, browser } = useCheckBrowsers();
+  const { isChrome, isSafari, isEdge, isOpera, isFirefox, isOther, browser } = useCheckBrowsers();
 
   return (
     <div>
       <p>Detected browser: {browser}</p>
       {isChrome && <span>You are using Chrome!</span>}
+      {isSafari && <span>You are using Safari!</span>}
+      {isEdge && <span>You are using Edge!</span>}
+      {isOpera && <span>You are using Opera!</span>}
+      {isFirefox && <span>You are using Firefox!</span>}
+      {isOther && <span>You are using an unsupported browser.</span>}
     </div>
   );
 }
