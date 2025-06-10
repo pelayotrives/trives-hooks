@@ -31,12 +31,57 @@ A custom React hook to detect the user's browser. It checks the `userAgent` stri
 import { useCheckBrowsers } from "./src/hooks/useCheckBrowsers";
 
 function MyComponent() {
-  const { isChrome } = useCheckBrowsers();
+  const { isChrome, browser } = useCheckBrowsers();
 
   return (
     <div>
       <p>Detected browser: {browser}</p>
       {isChrome && <span>You are using Chrome!</span>}
+    </div>
+  );
+}
+```
+
+### `useToggle`
+
+A custom React hook to easily manage boolean state with toggle functionality. You can toggle the value or set it explicitly.
+
+**Usage Example:**
+
+```typescript
+import { useToggle } from "./src/hooks/useToggle";
+
+function ToggleComponent() {
+  const [isActive, toggle] = useToggle();
+
+  return (
+    <div>
+      <button onClick={() => toggle()}>Toggle</button>
+      <button onClick={() => toggle(true)}>Set Active</button>
+      <button onClick={() => toggle(false)}>Set Inactive</button>
+      <p>Active: {isActive ? "Yes" : "No"}</p>
+    </div>
+  );
+}
+```
+
+### `useCopy`
+
+A custom React hook to copy text to the clipboard and track the copy state.
+
+**Usage Example:**
+
+```typescript
+import { useCopy } from "./src/hooks/useCopy";
+
+function CopyComponent() {
+  const { copy, copied } = useCopy();
+
+  return (
+    <div>
+      <button onClick={() => copy("Hello World!")}>
+        {copied ? "Copied!" : "Copy"}
+      </button>
     </div>
   );
 }
