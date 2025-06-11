@@ -27,7 +27,7 @@ type FormConfig = {
 type FormValues = Record<string, string>;
 type FormErrors = Record<string, string | null>;
 
-export function useFormValidation(config: FormConfig) {
+export const useFormValidation = (config: FormConfig) => {
   const initialValues: FormValues = {};
   Object.keys(config).forEach((key) => (initialValues[key] = ""));
 
